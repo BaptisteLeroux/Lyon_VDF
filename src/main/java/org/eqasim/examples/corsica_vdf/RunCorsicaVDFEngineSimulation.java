@@ -33,7 +33,7 @@ public class RunCorsicaVDFEngineSimulation {
 		Config config = ConfigUtils.loadConfig(configUrl);
 		configurator.updateConfig(config);
 
-		config.controller().setLastIteration(2);
+		// config.controller().setLastIteration(2);
 
 		// VDF: Add config group
 		// config.addModule(new VDFConfigGroup());
