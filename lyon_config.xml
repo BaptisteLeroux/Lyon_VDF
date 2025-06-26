@@ -131,7 +131,7 @@
 		<!-- Defines which mobility simulation will be used. Currently supported: [qsim, JDEQSim, hermes]
 		Depending on the chosen mobsim, you'll have to add additional config modules to configure the corresponding mobsim.
 		For 'qsim', add a module 'qsim' to the config. -->
-		<param name="mobsim" value="qsim" /> vdf ?
+		<param name="mobsim" value="qsim" />
 		<param name="outputDirectory" value="simulation_output" />
 		<!-- Possible values: failIfDirectoryExists,overwriteExistingFiles,deleteDirectoryIfExists -->
 		<param name="overwriteFiles" value="deleteDirectoryIfExists" />
@@ -219,16 +219,6 @@
 			<param name="estimator" value="ZeroUtilityEstimator" />
 			<param name="mode" value="truck" />
 		</parameterset>
-	</module>
-	<module name="eqasim:raptor" >
-		<param name="perTransfer_u" value="-1.0" />
-		<param name="travelTimeBus_u_h" value="-7.0" />
-		<param name="travelTimeOther_u_h" value="-7.0" />
-		<param name="travelTimeRail_u_h" value="-7.0" />
-		<param name="travelTimeSubway_u_h" value="-7.0" />
-		<param name="travelTimeTram_u_h" value="-7.0" />
-		<param name="waitTime_u_h" value="-6.0" />
-		<param name="walkTime_u_h" value="-7.0" />
 	</module>
 	<module name="eqasim:termination" >
 		<param name="historyFile" value="null" />
@@ -768,17 +758,12 @@
 		<param name="chainBasedModes" value="car,bike" />
 		<!-- Defines whether car availability must be considered or not. A agent has no car only if it has no license, or never access to a car -->
 		<param name="considerCarAvailability" value="false" />
-		<!-- If greater than 0, subtours will also consider coordinates to be at the same location when smaller than set distance. -->
-		<param name="coordDistance" value="0.0" />
 		<!-- Defines all the modes available, including chain-based modes, seperated by commas -->
 		<param name="modes" value="car,pt,bike,walk" />
-		<!-- Defines the probability of changing a single trip for a unchained mode instead of subtour. -->
-		<param name="probaForRandomSingleTripMode" value="0.0" />
 	</module>
 	<module name="swissRailRaptor" >
 		<!-- Sets whether intermodal access and egress modes are selected by least cost (default) or randomly chosen out of the available access / egress modes. -->
 		<param name="intermodalAccessEgressModeSelection" value="CalcLeastCostModePerStop" />
-		<param name="intermodalLegOnlyHandling" value="forbid" />
 		<!-- Possible values: Default,Individual -->
 		<param name="scoringParameters" value="Default" />
 		<param name="transferPenaltyBaseCost" value="0.0" />
@@ -851,7 +836,7 @@
 		<!-- How to deal with congested time bins that have no link entry events. `optimistic' assumes free speed (too optimistic); 'experimental_LastMile' is experimental and probably too pessimistic. -->
 		<param name="travelTimeAggregator" value="optimistic" />
 		<!-- The size of the time bin (in sec) into which the link travel times are aggregated for the router -->
-		<param name="travelTimeBinSize" value="900.0" />
+		<param name="travelTimeBinSize" value="900" />
 		<!-- How to deal with link entry times at different positions during the time bin. Currently supported: average, linearinterpolation -->
 		<param name="travelTimeGetter" value="average" />
 	</module>
@@ -873,15 +858,8 @@
 
     <!-- Configuration du moteur VDF (optionnel) -->
     <module name="eqasim:vdf_engine">
-
-		<param name="startTime" value="00:00:00" />
-        <param name="endTime" value="24:00:00" />
-        <param name="interval" value="01:00:00" />
-
         <!-- Modes gérés par le moteur VDF -->
         <param name="modes" value="car, car_passenger" />
-
-		<param name="capacityFactor" value="1.0" />
         
         <!-- Génération d'événements réseau détaillés -->
         <param name="generateNetworkEvents" value="true" />

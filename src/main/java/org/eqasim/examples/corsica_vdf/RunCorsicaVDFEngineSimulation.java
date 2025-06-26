@@ -24,13 +24,14 @@ import com.google.common.io.Resources;
 public class RunCorsicaVDFEngineSimulation {
 	static public void main(String[] args) throws ConfigurationException {
 		CommandLine cmd = new CommandLine.Builder(args) //
+				.allowOptions("config-path") //
 				.allowPrefixes("mode-parameter", "cost-parameter") //
 				.build();
 
 		IDFConfigurator configurator = new IDFConfigurator(cmd);
 
-		URL configUrl = Resources.getResource("lyon_config.xml");
-		Config config = ConfigUtils.loadConfig(configUrl);
+		String configPath = cmd.getOptionStrict("config-path");
+		Config config = ConfigUtils.loadConfig(configPath);
 		configurator.updateConfig(config);
 
 		// config.controller().setLastIteration(2);
@@ -45,14 +46,14 @@ public class RunCorsicaVDFEngineSimulation {
 		// VDF: Set capacity factor that can be used for calibration (in eqasim it does not correlate with
 		// sample size as this is controlled by the samplingRate in eqasim config group
 
-		// VDFConfigGroup.getOrCreate(config).setCapacityFactor(1);
+		VDFConfigGroup.getOrCreate(config).setCapacityFactor(1);
 
 		// VDF: Optional
 		VDFConfigGroup.getOrCreate(config).setWriteInterval(1);
 		VDFConfigGroup.getOrCreate(config).setWriteFlowInterval(1);
 
 		// VDF Engine: Add config group
-		config.addModule(new VDFEngineConfigGroup());
+		// config.addModule(new VDFEngineConfigGroup());
 
 		// VDF Engine: Decide whether to genertae link events or not
 		VDFEngineConfigGroup.getOrCreate(config).setGenerateNetworkEvents(true);
