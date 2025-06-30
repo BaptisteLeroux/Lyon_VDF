@@ -20,16 +20,15 @@
             <id>central</id>
             <url>https://repo1.maven.org/maven2</url>
         </repository>
+
+		<repository>
+			<id>geotoolkit</id>
+			<url>https://nexus.geomatys.com/repository/geotoolkit/</url>
+		</repository>
+
     </repositories>
 
     <dependencies>
-        <!-- MATSim -->
-        <dependency>
-            <groupId>org.matsim</groupId>
-            <artifactId>matsim</artifactId>
-            <version>2025.0-PR3568</version>
-        </dependency>
-
         <!-- eQasim Core -->
         <dependency>
             <groupId>org.eqasim</groupId>
@@ -44,19 +43,11 @@
             <version>2.0.0</version>
         </dependency>
 
-        <!-- Guava pour Resources.getResource() -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>31.1-jre</version>
-        </dependency>
-
 		<dependency>
-			<groupId>jakarta.inject</groupId>
-			<artifactId>jakarta.inject-api</artifactId>
-			<version>2.0.1</version>
+			<groupId>com.github.jai-imageio</groupId>
+			<artifactId>jai-imageio-core</artifactId>
+			<version>1.4.0</version>
 		</dependency>
-
     </dependencies>
 
     <profiles>
@@ -85,6 +76,14 @@
 												<exclude>META-INF/*.SF</exclude>
 												<exclude>META-INF/*.DSA</exclude>
 												<exclude>META-INF/*.RSA</exclude>
+												<exclude>com/sun/media/imageioimpl/plugins/jpeg/**</exclude>
+												<exclude>com/sun/media/imageioimpl/stream/**</exclude>
+												<exclude>META-INF/services/javax.imageio.spi.ImageWriterSpi</exclude>
+												<exclude>META-INF/services/javax.imageio.spi.ImageInputStreamSpi</exclude>
+												<exclude>META-INF/services/javax.imageio.spi.ImageReaderSpi</exclude>
+												<exclude>META-INF/services/javax.imageio.spi.ImageOutputStreamSpi</exclude>
+												<exclude>com/sun/media/imageioimpl/stream/**</exclude>
+												<exclude>com/sun/media/imageioimpl/plugins/jpeg/**</exclude>
 											</excludes>
 										</filter>
 									</filters>
